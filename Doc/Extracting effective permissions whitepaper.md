@@ -1,8 +1,8 @@
-  ALM RANGERS
-  -------------
+ALM RANGERS
+ ---
 
 Extract effective permissions from TFS 2013
-===========================================
+===
 
 Hosam Kamel, Michel Perfetti
 
@@ -19,11 +19,12 @@ This whitepaper covers the following core topics:
 
 ![](media/image1.png)
 
-  NOTE   If you are looking for information on security auditing, then the ***Security auditing in TFS 2013*** paper may be more relevant for you. Please contact the Visual Studio ALM Rangers for details.
-  ------ -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---
+NOTE: If you are looking for information on security auditing, then the ***Security auditing in TFS 2013*** paper may be more relevant for you. Please contact the Visual Studio ALM Rangers for details.
+ ---
 
 Permissions in TFS
-------------------
+---
 
 Permissions determine the authorization for user actions such as
 workspace administration and project creation. When you create a Team
@@ -45,7 +46,7 @@ various tools to facilitate centralized management of security
 permissions.
 
 Top 3 tools for security management
------------------------------------
+---
 
 Below, we have summarized security-related features for the top three
 tools available for managing Team Foundation Server Permissions.
@@ -102,7 +103,7 @@ Security functionality:<ul>
 </tr>
 </table>
 
-See [Visual Studio ALM Community Widgets](http://aka.ms/widgets)[^6] for
+See [Visual Studio ALM Community Widgets](http://aka.ms/widgets) for
 more tools and widgets.
 
 While these tools provide many great features to facilitate permissions
@@ -114,7 +115,7 @@ comprehensive report, on permissions that a TFS user or security group
 has in terms of known and accessible security namespaces.
 
 Security namespace
-------------------
+---
 
 A security namespace is a container or grouping of security privileges
 within Team Foundation Server. You manage security assignments and
@@ -142,7 +143,7 @@ assignments
 
 There are two simple ways of interacting with the namespaces of a Team
 Foundation Server instance. You can use either the
-[TFSSecurity.exe](http://msdn.microsoft.com/en-us/library/ms252504.aspx)[^7]
+[TFSSecurity.exe](http://msdn.microsoft.com/en-us/library/ms252504.aspx)
 command line utility, or the Team Foundation Server’s **Object Model
 API**s.
 
@@ -221,11 +222,11 @@ deployment-wide basis and these permissions affect every Team Project
 and Team Project Collection in the deployment.
 
 Peruse the
-[ISecurityService[^8]](http://msdn.microsoft.com/en-us/library/microsoft.teamfoundation.framework.client.isecurityservice.aspx)
+[ISecurityService](http://msdn.microsoft.com/en-us/library/microsoft.teamfoundation.framework.client.isecurityservice.aspx)
 interface, the
-[GetSecurityNamespace](http://msdn.microsoft.com/en-us/library/microsoft.teamfoundation.framework.client.isecurityservice.getsecuritynamespace.aspx)[^9],
+[GetSecurityNamespace](http://msdn.microsoft.com/en-us/library/microsoft.teamfoundation.framework.client.isecurityservice.getsecuritynamespace.aspx),
 and
-[TfsConfigurationServer](http://msdn.microsoft.com/en-us/library/microsoft.teamfoundation.client.tfsconfigurationserver.aspx)[^10]
+[TfsConfigurationServer](http://msdn.microsoft.com/en-us/library/microsoft.teamfoundation.client.tfsconfigurationserver.aspx)
 object to establish a connection
 
 Project Collection-level permissions are set on a Team Project
@@ -234,17 +235,17 @@ Team Project; instead, they contain permissions that can affect every
 Team Project in the Team Project Collection.
 
 See [ISecurityService
-Interface](http://msdn.microsoft.com/en-us/library/microsoft.teamfoundation.framework.client.isecurityservice.aspx)[^11],
-[GetSecurityNamespace](http://msdn.microsoft.com/en-us/library/microsoft.teamfoundation.framework.client.isecurityservice.getsecuritynamespace.aspx)[^12],
+Interface](http://msdn.microsoft.com/en-us/library/microsoft.teamfoundation.framework.client.isecurityservice.aspx),
+[GetSecurityNamespace](http://msdn.microsoft.com/en-us/library/microsoft.teamfoundation.framework.client.isecurityservice.getsecuritynamespace.aspx),
 and use the
-[TfsTeamProjectCollection](http://msdn.microsoft.com/en-us/library/microsoft.teamfoundation.client.tfsteamprojectcollection.aspx)[^13]
+[TfsTeamProjectCollection](http://msdn.microsoft.com/en-us/library/microsoft.teamfoundation.client.tfsteamprojectcollection.aspx)
 object to establish a connection.
 
 Extensible sample tool to help you
-----------------------------------
-
-  NOTE   Download the complete sample code from CodePlex, [VSO](https://almrangers.visualstudio.com/DefaultCollection/VisualStudio.ALM/_versionControl#path=%24%2FVisualStudio.ALM%2FvsarSecurity%2Fmain%2Fcode%2FPermissionsExtractionTool&_a=contents), or [CorpNet](https://microsoft-my.sharepoint.com/personal/willys_microsoft_com/Documents/Shared%20with%20Everyone/vsarSecurity/PermissionsExtractionTool.zip).
-  ------ -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---
+---
+NOTE: Download the complete sample code from CodePlex, [VSO](https://almrangers.visualstudio.com/DefaultCollection/VisualStudio.ALM/_versionControl#path=%24%2FVisualStudio.ALM%2FvsarSecurity%2Fmain%2Fcode%2FPermissionsExtractionTool&_a=contents), or [CorpNet](https://microsoft-my.sharepoint.com/personal/willys_microsoft_com/Documents/Shared%20with%20Everyone/vsarSecurity/PermissionsExtractionTool.zip).
+ ---
 
 ### A quick tour
 
@@ -347,7 +348,7 @@ tool and transformed using the XSLT document.
 Figure 4 - Sample Report
 
 Conclusion
-----------
+---
 
 This whitepaper summarizes our security research focused on security
 mapping. Here, we have discussed existing tooling, introduced you to
@@ -356,40 +357,12 @@ solution, which you can use to explore and extend the effective security
 permissions extraction functionality.
 
 Thanks for taking the time to read this and watch for more articles from
-the [ALM Rangers](http://aka.ms/vsarunderstand)[^14].
+the [ALM Rangers](http://aka.ms/vsarunderstand).
 
-  --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ ---
   **Hosam Kamel** is a Senior Premier Field Engineer (PFE) at Microsoft, and a Visual Studio ALM Ranger specializing in providing field-level support for Visual Studio Application Lifecycle Management (ALM) and Team Foundation Server. He focuses on helping software professionals and organizations build better applications and solutions using Microsoft Application Lifecycle Management technologies, practices, and tools working with development teams supporting them removing the traditional silos between development, testing, and project management to establish cohesive processes with the Visual Studio ALM tools. His experience with Team Foundation Server and Visual Studio started with the beginning of the VSTS and its product family nearly seven years ago. He is also an active Visual Studio ALM Ranger with lots of projects’ contributions. He has also authored several article, and spoken at various user groups, events, and conferences. Prior to joining Microsoft, Hosam worked as a Regional Technology Solution Professional for MEA Center of Expertise.
 
   **Michel Perfetti** is a Manager at Cellenza, a French consulting company. He has 15 years of experience in software development and MVP since 2006. He tries to apply the best ALM and agile techniques to his customers.
-  --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ ---
   **THANKS** to the following technical experts for reviewing this article: Baruch Frei, Bill Heys, Jon Guerin, Mario Rodriguez, Osmar Paes Landin Filho, Prasanna Ramkumar, Vinicius Moura, Willy-Peter Schaub.
-  --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-[^1]: ^http://teamprojectmanager.codeplex.com^
-
-[^2]: ^http://www.codeplex.com/site/users/view/jelled^
-
-[^3]: ^http://tfsadmin.codeplex.com^
-
-[^4]: ^http://www.codeplex.com/site/users/view/gholliday^
-
-[^5]: ^http://www.attrice.info/downloads^
-
-[^6]: ^http://aka.ms/widgets^
-
-[^7]: http://msdn.microsoft.com/en-us/library/ms252504.aspx
-
-[^8]: ^http://msdn.microsoft.com/en-us/library/microsoft.teamfoundation.framework.client.isecurityservice.aspx^
-
-[^9]: ^http://msdn.microsoft.com/en-us/library/microsoft.teamfoundation.framework.client.isecurityservice.getsecuritynamespace.aspx^
-
-[^10]: ^http://msdn.microsoft.com/en-us/library/microsoft.teamfoundation.client.tfsconfigurationserver.aspx^
-
-[^11]: ^http://msdn.microsoft.com/en-us/library/microsoft.teamfoundation.framework.client.isecurityservice.aspx^
-
-[^12]: ^http://msdn.microsoft.com/en-us/library/microsoft.teamfoundation.framework.client.isecurityservice.getsecuritynamespace.aspx^
-
-[^13]: ^http://msdn.microsoft.com/en-us/library/microsoft.teamfoundation.client.tfsteamprojectcollection.aspx^
-
-[^14]: ^http://aka.ms/vsarunderstand^
+ ---
