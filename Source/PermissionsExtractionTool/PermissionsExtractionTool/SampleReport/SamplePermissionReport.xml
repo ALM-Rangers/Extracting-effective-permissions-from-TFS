@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="..\XslTemplates\ALMRangers.SampleXslt.xsl"?>
+<PermissionsReport xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Date>2013-07-10T01:04:59.7090915-07:00</Date>
+  <TeamProjects>
+    <TfsTeamProject>
+      <BuildPermissions />
+      <IterationPermissions />
+      <Name>vsarSecurity</Name>
+      <ProjectLevelPermissions>
+        <ProjectLevelPermissionsList>
+          <Permission>
+            <DisplayName>Edit project-level information</DisplayName>
+            <PermissionConstant>GENERIC_WRITE</PermissionConstant>
+            <Value>Allow</Value>
+          </Permission>
+          <Permission>
+            <DisplayName>Delete team project</DisplayName>
+            <PermissionConstant>DELETE</PermissionConstant>
+            <Value>Allow</Value>
+          </Permission>
+          <Permission>
+            <DisplayName>Delete test runs</DisplayName>
+            <PermissionConstant>DELETE_TEST_RESULTS</PermissionConstant>
+            <Value>Allow</Value>
+          </Permission>
+          <Permission>
+            <DisplayName>Manage test configurations</DisplayName>
+            <PermissionConstant>MANAGE_TEST_CONFIGURATIONS</PermissionConstant>
+            <Value>Allow</Value>
+          </Permission>
+          <Permission>
+            <DisplayName>View project-level information</DisplayName>
+            <PermissionConstant>GENERIC_READ</PermissionConstant>
+            <Value>Deny</Value>
+          </Permission>
+          <Permission>
+            <DisplayName>Create test runs</DisplayName>
+            <PermissionConstant>PUBLISH_TEST_RESULTS</PermissionConstant>
+            <Value>Deny</Value>
+          </Permission>
+          <Permission>
+            <DisplayName>Manage test environments</DisplayName>
+            <PermissionConstant>MANAGE_TEST_ENVIRONMENTS</PermissionConstant>
+            <Value>Deny</Value>
+          </Permission>
+        </ProjectLevelPermissionsList>
+      </ProjectLevelPermissions>
+      <VersionControlPermissions>
+        <VersionControlPermissionsList>
+          <Permission>
+            <DisplayName>Check out</DisplayName>
+            <PermissionConstant>PendChange</PermissionConstant>
+            <Value>Allow</Value>
+          </Permission>
+          <Permission>
+            <DisplayName>Check in</DisplayName>
+            <PermissionConstant>Checkin</PermissionConstant>
+            <Value>Allow</Value>
+          </Permission>
+          <Permission>
+            <DisplayName>Administer labels</DisplayName>
+            <PermissionConstant>LabelOther</PermissionConstant>
+            <Value>Allow</Value>
+          </Permission>
+          <Permission>
+            <DisplayName>Merge</DisplayName>
+            <PermissionConstant>Merge</PermissionConstant>
+            <Value>Allow</Value>
+          </Permission>
+          <Permission>
+            <DisplayName>Read</DisplayName>
+            <PermissionConstant>Read</PermissionConstant>
+            <Value>Deny</Value>
+          </Permission>
+          <Permission>
+            <DisplayName>Label</DisplayName>
+            <PermissionConstant>Label</PermissionConstant>
+            <Value>Deny</Value>
+          </Permission>
+          <Permission>
+            <DisplayName>Check in other users' changes</DisplayName>
+            <PermissionConstant>CheckinOther</PermissionConstant>
+            <Value>Deny</Value>
+          </Permission>
+        </VersionControlPermissionsList>
+      </VersionControlPermissions>
+      <WorkItemsPermissions />
+    </TfsTeamProject>
+  </TeamProjects>
+  <TfsCollectionUrl>http://vsalm:8080/tfs/almrangers</TfsCollectionUrl>
+  <UserName>vsalm\adam</UserName>
+</PermissionsReport>

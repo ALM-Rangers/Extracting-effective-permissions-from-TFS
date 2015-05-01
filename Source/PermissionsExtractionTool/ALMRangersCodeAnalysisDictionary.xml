@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dictionary>
+  <Words>
+    <Recognized>
+      <Word>Tfs</Word>
+      <Word>teamname</Word>
+      <Word>AddUser</Word>
+      <Word>teamprojectname</Word>
+      <Word>teamproject</Word>
+      <Word>collectionurl</Word>
+      <Word>createteam</Word>
+      <Word>ListTeams</Word>
+      <Word>TfsTeams</Word>
+      <Word>Workitem</Word>
+      <Word>Workitems</Word>
+    </Recognized>
+    <Compound>
+      <Term CompoundAlternate="AddUser">Adduser</Term>
+      <Term CompoundAlternate="TfsTeams">Tfsteams</Term>
+      <Term CompoundAlternate="CreateTeam">Createteam</Term>
+    </Compound>
+  </Words>
+  <Acronyms>
+    <CasingExceptions>
+      <Acronym>ALM</Acronym>
+    </CasingExceptions>
+  </Acronyms>
+</Dictionary>
