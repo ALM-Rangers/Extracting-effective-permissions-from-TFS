@@ -50,38 +50,57 @@ Top 3 tools for security management
 Below, we have summarized security-related features for the top three
 tools available for managing Team Foundation Server Permissions.
 
-1. [Team Project Manager](http://teamprojectmanager.codeplex.com/) by Community - CodePlex [jelled](http://www.codeplex.com/site/users/view/jelled)
-  * Security object
-    * Tool focused on security groups. Doesn’t manage user permissions
-  * Security functionality
-    * Understand which members are associated with which security groups
-    * Delete security groups
-    * Add or update security groups
-    * Manage members and permissions for security groups
+<table>
+  <tr>
+    <th>Tool</th>
+    <th>Author</th>		
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>Team Project Manager</td>
+    <td>Community - CodePlex jelled</td>		
+    <td><ul>Security object:
+<li>Tool focused on security groups. Doesn’t manage user permissions</li></ul>
+<ul>Security functionality:
+<li>Understand which members are associated with which security groups</li>
+<li>Delete security groups</li>
+<li>Add or update security groups</li>
+<li>Manage members and permissions for security groups</li></ul>
+</td>
+</tr>
 
-2. [TFS Administration Tool](http://tfsadmin.codeplex.com/) by Community - CodePlex [gholliday](http://www.codeplex.com/site/users/view/gholliday)
-  * Security object
-    * Manage user permissions on all three platforms: TFS, SharePoint, and SQL Server Reporting Services.
-    * The tools focused on TFS security groups.
-  * Security functionalities
-    * The TFS Administration Tool allows Team Foundation Server administrators to manage user permissions on all three platforms utilized by Team Foundation Server:
-     * Team Foundation Server
-     * SharePoint
-     * SQL Server Reporting Services
-     * This tool also allows administrators to copy user permissions among Team Projects and to identify all missing permissions on any of the three platforms.
+  <tr>
+    <td>TFS Administration Tool</td>
+    <td>Community- CodePlex gholliday</td>		
+    <td><ul>Security object:
+<li>Manage user permissions on all three platforms: TFS, SharePoint, and SQL Server Reporting Services. </li>
+<li>The tools focused on TFS security groups. </li></ul>
+<ul>Security functionality:
+<li>The TFS Administration Tool allows Team Foundation Server administrators to manage user permissions on all three platforms utilized by Team Foundation Server:</li>
+<li>Team Foundation Server</li>
+<li>SharePoint</li>
+<li>SQL Server Reporting Services</li>
+<li>This tool also allows administrators to copy user permissions among Team Projects and to identify all missing permissions on any of the three platforms.</li></ul>
+</td>
+</tr>
 
-3. [TFS Sidekicks](http://www.attrice.info/downloads/) by Attrice Corporation
-  * Security object
-    * Tool is focused on user permissions
-  * Security functionalities
-    * Review effective permissions for selected user
-    * View which Team Foundation Server groups the user is a member of (Windows domain groups are not included)
-    * View a user’s global TFS Server permissions
-    * View project-specific effective permissions for a selected Team project
-    * View a user’s Team project’s permissions
-    * Select a project’s version control folder/file and view effective version control permissions for that item (including an indication of whether permissions are inherited or explicitly set)
-    * View effective permissions for a selected project’s area
-    * For each effective permission displayed, view a reason for the effective permission setting – namely, for which groups Allow/Deny permissions are set and therefore what the effective permission is based on
+  <tr>
+    <td>TFS Sidekicks</td>
+    <td>Attrice Corporation</td>		
+    <td><ul>Security object:
+<li>Tool is focused on user permissions</li></ul>
+<ul>Security functionality:
+<li>Review effective permissions for selected user</li>
+<li>View which Team Foundation Server groups the user is a member of (Windows domain groups are not included)</li>
+<li>View a user’s global TFS Server permissions</li>
+<li>View project-specific effective permissions for a selected Team project</li>
+<li>View a user’s Team project’s permissions</li>
+<li>Select a project’s version control folder/file and view effective version control permissions for that item (including an indication of whether permissions are inherited or explicitly set)</li>
+<li>View effective permissions for a selected project’s area</li>
+<li>For each effective permission displayed, view a reason for the effective permission setting – namely, for which groups Allow/Deny permissions are set and therefore what the effective permission is based on</li></ul>
+</td>
+</tr>
+</table>
 
 See [Visual Studio ALM Community Widgets](http://aka.ms/widgets)[^6] for
 more tools and widgets.
