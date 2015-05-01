@@ -52,9 +52,9 @@ tools available for managing Team Foundation Server Permissions.
 
 <table>
   <tr>
-    <th>Tool</th>
-    <th>Author</th>		
-    <th>Description</th>
+    <th align="left">Tool</th>
+    <th align="left">Author</th>		
+    <th align="left">Description</th>
   </tr>
   <tr>
     <td valign="top"><a href="http://teamprojectmanager.codeplex.com/">Team Project Manager</a></td>
