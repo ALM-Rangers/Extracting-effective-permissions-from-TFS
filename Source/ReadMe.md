@@ -1,7 +1,11 @@
-﻿Copyright (c) Microsoft Corporation.  Distributed under the following terms:
+Sample Code Note NuGet package(s) are not included with the sample code.
  
-1. Microsoft and any contributors to this project each grants you a license, under its respective copyrights, to the Microsoft Azure Documentation under the [Creative Commons Attribution 3.0 United States License](http://creativecommons.org/licenses/by/3.0/us/legalcode).  In addition, with respect to any sample code contained in the documentation, Microsoft and any such contributors grants you an additional license, under its respective intellectual property rights, to use the code to develop or design your software for Microsoft Azure.
- 
-2.  Microsoft, Windows, Microsoft Azure and/or other Microsoft products and services referenced in the documentation may be either trademarks or registered trademarks of Microsoft in the United States and/or other countries. This license does not grant you rights to use any names, logos, or trademarks. For Microsoft’s general trademark guidelines, go to [http://go.microsoft.com/fwlink/?LinkID=254653](http://go.microsoft.com/fwlink/?LinkID=254653).
- 
-3.  Microsoft and any contributors reserves all others rights, whether under copyrights, patents, or trademarks, or by implication, estoppel or otherwise.
+Enable NuGet Package Restore to download them. For more information, see http://go.microsoft.com/fwlink/?LinkID=322105.
+
+Before you build proceed as follows:
+1. Open sample solution in Visual Studio 2013.
+2. Right-click on the solution in Solution Explorer.
+3. Select "Enable NuGet Package Restore".
+4. Right-click on the solution in Solution Explorer.
+5. Select "Manage NuGet Packages for Solution".
+6. Rebuild solution!
