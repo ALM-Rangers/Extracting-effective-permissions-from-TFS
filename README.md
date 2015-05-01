@@ -1,2 +1,10 @@
-# Extracting-effective-permissions-from-TFS
-We are pleased to announce that the release of the Extracting effective permissions from TFS research findings, packaged in a whitepaper and samples, based on a prototype, not a production solution.
+# Extracting effective permissions from TFS
+Welcome to the Extract effective permissions from TFS Whitepaper and Samples
+
+This practical guidance and sample code is based on extensive research to address two of the commonly heard requests on Team Foundation Server security:
+1.  Report on the effective permissions of a TFS user/group.
+2.  Report on security auditing for TFS. Please contact the [ALM Rangers](http://aka.ms/vsarIndex), if you need more information on this.
+
+---
+IMPORTANT: The sample solutions are "samples only" and not intended for production environments.
+ ---
