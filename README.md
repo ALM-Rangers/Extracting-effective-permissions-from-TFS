@@ -14,7 +14,7 @@ IMPORTANT: The sample solutions are "samples only" and not intended for producti
 <img src="https://github.com/ALM-Rangers/Extracting-effective-permissions-from-TFS/blob/master/Doc/media/VSALMLogo.png"></img>
 </td>
 <td>
-The Visual Studio ALM Rangers provide professional guidance, practical experience and gap-filling solutions to the ALM community. Visit http://blogs.msdn.com/b/visualstudioalmrangers/ to find out more.
+The Visual Studio ALM Rangers provide professional guidance, practical experience and gap-filling solutions to the ALM community. Visit <a href="http://aka.ms/vsarblog">aka.ms/vsarblog</a> to find out more.
 </td>
 </tr>
 </table>
