@@ -59,9 +59,9 @@ tools available for managing Team Foundation Server Permissions.
   <tr>
     <td valign="top"><a href="http://teamprojectmanager.codeplex.com/">Team Project Manager</a></td>
     <td valign="top">Community - CodePlex <a href="http://www.codeplex.com/site/users/view/jelled">jelled</a></td>		
-    <td valign="top"><ul>Security object:
+    <td valign="top">Security object:<ul>
 <li>Tool focused on security groups. Doesn’t manage user permissions</li></ul>
-<ul>Security functionality:
+Security functionality:<ul>
 <li>Understand which members are associated with which security groups</li>
 <li>Delete security groups</li>
 <li>Add or update security groups</li>
@@ -72,10 +72,10 @@ tools available for managing Team Foundation Server Permissions.
   <tr>
     <td valign="top"><a href="http://tfsadmin.codeplex.com/">TFS Administration Tool</a></td>
     <td valign="top">Community- CodePlex <a href="http://www.codeplex.com/site/users/view/gholliday">gholliday</a></td>		
-    <td valign="top"><ul>Security object:
+    <td valign="top">Security object:<ul>
 <li>Manage user permissions on all three platforms: TFS, SharePoint, and SQL Server Reporting Services. </li>
 <li>The tools focused on TFS security groups. </li></ul>
-<ul>Security functionality:
+Security functionality:<ul>
 <li>The TFS Administration Tool allows Team Foundation Server administrators to manage user permissions on all three platforms utilized by Team Foundation Server:</li>
 <li>Team Foundation Server</li>
 <li>SharePoint</li>
@@ -87,9 +87,9 @@ tools available for managing Team Foundation Server Permissions.
   <tr>
     <td valign="top"><a href="http://www.attrice.info/downloads/">TFS Sidekicks</a></td>
     <td valign="top">Attrice Corporation</td>		
-    <td valign="top"><ul>Security object:
+    <td valign="top">Security object:<ul>
 <li>Tool is focused on user permissions</li></ul>
-<ul>Security functionality:
+Security functionality:<ul>
 <li>Review effective permissions for selected user</li>
 <li>View which Team Foundation Server groups the user is a member of (Windows domain groups are not included)</li>
 <li>View a user’s global TFS Server permissions</li>
