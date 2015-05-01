@@ -8,3 +8,5 @@ This practical guidance and sample code is based on extensive research to addres
 ---
 IMPORTANT: The sample solutions are "samples only" and not intended for production environments.
  ---
+
+![](Doc/media/VSALMLogo.png) The Visual Studio ALM Rangers provide professional guidance, practical experience and gap-filling solutions to the ALM community. Visit http://blogs.msdn.com/b/visualstudioalmrangers/ to find out more.
