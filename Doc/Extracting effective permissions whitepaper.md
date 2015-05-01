@@ -50,77 +50,38 @@ Top 3 tools for security management
 Below, we have summarized security-related features for the top three
 tools available for managing Team Foundation Server Permissions.
 
+1. [Team Project Manager](http://teamprojectmanager.codeplex.com/) by Community - CodePlex [jelled](http://www.codeplex.com/site/users/view/jelled)
+  * Security object
+    * Tool focused on security groups. Doesn’t manage user permissions
+  * Security functionality
+    * Understand which members are associated with which security groups
+    * Delete security groups
+    * Add or update security groups
+    * Manage members and permissions for security groups
 
-Tool | Author | Description
---- | --- | ---
-Team Project Manager | Community - CodePlex jelled | Security object 
+2. [TFS Administration Tool](http://tfsadmin.codeplex.com/) by Community - CodePlex [gholliday](http://www.codeplex.com/site/users/view/gholliday)
+  * Security object
+    * Manage user permissions on all three platforms: TFS, SharePoint, and SQL Server Reporting Services.
+    * The tools focused on TFS security groups.
+  * Security functionalities
+    * The TFS Administration Tool allows Team Foundation Server administrators to manage user permissions on all three platforms utilized by Team Foundation Server:
+     * Team Foundation Server
+     * SharePoint
+     * SQL Server Reporting Services
+     * This tool also allows administrators to copy user permissions among Team Projects and to identify all missing permissions on any of the three platforms.
 
-- Tool focused on security groups. Doesn’t manage user permissions
-Security functionality
-- Understand which members are associated with which security groups
-- Delete security groups
-- Add or update security groups
-- Manage members and permissions for security groups
-
-  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  Tool                                                                  Author                                                                                   Description
-  --------------------------------------------------------------------- ---------------------------------------------------------------------------------------- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  [Team Project Manager](http://teamprojectmanager.codeplex.com/)[^1]   Community - CodePlex [jelled](http://www.codeplex.com/site/users/view/jelled)[^2]        Security object
-                                                                                                                                                                 
-                                                                                                                                                                 Tool focused on security groups. Doesn’t manage user permissions
-                                                                                                                                                                 
-                                                                                                                                                                 Security functionality
-                                                                                                                                                                 
-                                                                                                                                                                 Understand which members are associated with which security groups
-                                                                                                                                                                 
-                                                                                                                                                                 Delete security groups
-                                                                                                                                                                 
-                                                                                                                                                                 Add or update security groups
-                                                                                                                                                                 
-                                                                                                                                                                 Manage members and permissions for security groups
-
-  TFS Administration Tool[^3]                                           Community- CodePlex [gholliday](http://www.codeplex.com/site/users/view/gholliday)[^4]   Security object
-                                                                                                                                                                 
-                                                                                                                                                                 Manage user permissions on all three platforms: TFS, SharePoint, and SQL Server Reporting Services.
-                                                                                                                                                                 
-                                                                                                                                                                 The tools focused on TFS security groups.
-                                                                                                                                                                 
-                                                                                                                                                                 Security functionalities
-                                                                                                                                                                 
-                                                                                                                                                                 The TFS Administration Tool allows Team Foundation Server administrators to manage user permissions on all three platforms utilized by Team Foundation Server:
-                                                                                                                                                                 
-                                                                                                                                                                 Team Foundation Server
-                                                                                                                                                                 
-                                                                                                                                                                 SharePoint
-                                                                                                                                                                 
-                                                                                                                                                                 SQL Server Reporting Services
-                                                                                                                                                                 
-                                                                                                                                                                 This tool also allows administrators to copy user permissions among Team Projects and to identify all missing permissions on any of the three platforms.
-
-  [TFS Sidekicks](http://www.attrice.info/downloads/)[^5]               Attrice Corporation                                                                      Security object
-                                                                                                                                                                 
-                                                                                                                                                                 Tool is focused on user permissions
-                                                                                                                                                                 
-                                                                                                                                                                 Security functionalities
-                                                                                                                                                                 
-                                                                                                                                                                 Review effective permissions for selected user
-                                                                                                                                                                 
-                                                                                                                                                                 View which Team Foundation Server groups the user is a member of (Windows domain groups are not included)
-                                                                                                                                                                 
-                                                                                                                                                                 View a user’s global TFS Server permissions
-                                                                                                                                                                 
-                                                                                                                                                                 View project-specific effective permissions for a selected Team project
-                                                                                                                                                                 
-                                                                                                                                                                 View a user’s Team project’s permissions
-                                                                                                                                                                 
-                                                                                                                                                                 Select a project’s version control folder/file and view effective version control permissions for that item (including an indication of whether permissions are inherited or explicitly set)
-                                                                                                                                                                 
-                                                                                                                                                                 View effective permissions for a selected project’s area
-                                                                                                                                                                 
-                                                                                                                                                                 For each effective permission displayed, view a reason for the effective permission setting – namely, for which groups Allow/Deny permissions are set and therefore what the effective permission is based on
-  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-Table 1 – Top three tools
+3. [TFS Sidekicks](http://www.attrice.info/downloads/) by Attrice Corporation
+  * Security object
+    * Tool is focused on user permissions
+  * Security functionalities
+    * Review effective permissions for selected user
+    * View which Team Foundation Server groups the user is a member of (Windows domain groups are not included)
+    * View a user’s global TFS Server permissions
+    * View project-specific effective permissions for a selected Team project
+    * View a user’s Team project’s permissions
+    * Select a project’s version control folder/file and view effective version control permissions for that item (including an indication of whether permissions are inherited or explicitly set)
+    * View effective permissions for a selected project’s area
+    * For each effective permission displayed, view a reason for the effective permission setting – namely, for which groups Allow/Deny permissions are set and therefore what the effective permission is based on
 
 See [Visual Studio ALM Community Widgets](http://aka.ms/widgets)[^6] for
 more tools and widgets.
