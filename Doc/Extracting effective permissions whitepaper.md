@@ -57,8 +57,8 @@ tools available for managing Team Foundation Server Permissions.
     <th>Description</th>
   </tr>
   <tr>
-    <td>Team Project Manager</td>
-    <td>Community - CodePlex jelled</td>		
+    <td><a href="http://teamprojectmanager.codeplex.com/">Team Project Manager</a></td>
+    <td>Community - CodePlex <a href="http://www.codeplex.com/site/users/view/jelled">jelled</a></td>		
     <td><ul>Security object:
 <li>Tool focused on security groups. Doesn’t manage user permissions</li></ul>
 <ul>Security functionality:
@@ -70,8 +70,8 @@ tools available for managing Team Foundation Server Permissions.
 </tr>
 
   <tr>
-    <td>TFS Administration Tool</td>
-    <td>Community- CodePlex gholliday</td>		
+    <td><a href="http://tfsadmin.codeplex.com/">TFS Administration Tool</a></td>
+    <td>Community- CodePlex <a href="http://www.codeplex.com/site/users/view/gholliday">gholliday</a></td>		
     <td><ul>Security object:
 <li>Manage user permissions on all three platforms: TFS, SharePoint, and SQL Server Reporting Services. </li>
 <li>The tools focused on TFS security groups. </li></ul>
@@ -85,7 +85,7 @@ tools available for managing Team Foundation Server Permissions.
 </tr>
 
   <tr>
-    <td>TFS Sidekicks</td>
+    <td><a href="http://www.attrice.info/downloads/">TFS Sidekicks</a></td>
     <td>Attrice Corporation</td>		
     <td><ul>Security object:
 <li>Tool is focused on user permissions</li></ul>
