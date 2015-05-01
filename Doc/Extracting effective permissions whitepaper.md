@@ -51,10 +51,16 @@ Below, we have summarized security-related features for the top three
 tools available for managing Team Foundation Server Permissions.
 
 
-Markdown | Less | Pretty
+Tool | Author | Description
 --- | --- | ---
-*Still* | `renders` | **nicely**
-1 | 2 | 3
+Team Project Manager | Community - CodePlex jelled | Security object 
+
+- Tool focused on security groups. Doesn’t manage user permissions
+Security functionality
+- Understand which members are associated with which security groups
+- Delete security groups
+- Add or update security groups
+- Manage members and permissions for security groups
 
   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
   Tool                                                                  Author                                                                                   Description
