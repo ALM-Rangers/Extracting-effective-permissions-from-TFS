@@ -1,1 +1,0 @@
-C:\Users\hkamel\Source\Repos\Extracting-effective-permissions-from-TFS\Source\PermissionsExtractionTool\PermissionsExtractionTool\bin\Debug\PermissionsExtractionTool.exe.config
