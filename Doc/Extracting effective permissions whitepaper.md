@@ -15,7 +15,7 @@ This whitepaper covers the following core topics:
 ![](media/image1.png)
 
 ---
-NOTE: If you are looking for information on security auditing, then the ***Security auditing in TFS 2013*** paper may be more relevant for you. Please contact the Visual Studio ALM Rangers for details.
+NOTE: If you are looking for information on security auditing, then the ***Security auditing in TFS 2013*** paper may be more relevant for you. Please contact the <a href="http://blogs.msdn.com/b/visualstudioalmrangers/">Visual Studio ALM Rangers</a> for details.
  ---
 
 Permissions in TFS
@@ -179,7 +179,7 @@ and use the
 Extensible sample tool to help you
 ---
 ---
-NOTE: Download the complete sample code from CodePlex, [VSO](https://almrangers.visualstudio.com/DefaultCollection/VisualStudio.ALM/_versionControl#path=%24%2FVisualStudio.ALM%2FvsarSecurity%2Fmain%2Fcode%2FPermissionsExtractionTool&_a=contents), or [CorpNet](https://microsoft-my.sharepoint.com/personal/willys_microsoft_com/Documents/Shared%20with%20Everyone/vsarSecurity/PermissionsExtractionTool.zip).
+NOTE: Download the complete sample code from GiHub (https://github.com/ALM-Rangers/Extracting-effective-permissions-from-TFS/tree/master/Source).
  ---
 
 ### A quick tour
