@@ -2,6 +2,7 @@
 Welcome to the Extract effective permissions from TFS Whitepaper and Samples
 
 This practical guidance and sample code is based on extensive research to address two of the commonly heard requests on Team Foundation Server security:
+
 1.  Report on the effective permissions of a TFS user/group.
 2.  Report on security auditing for TFS. Please contact the [ALM Rangers](http://aka.ms/vsarIndex), if you need more information on this.
 
