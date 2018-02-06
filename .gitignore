@@ -1,5 +1,5 @@
-﻿################################################################################
-# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
-################################################################################
-
+﻿.vs
+NuGet.exe
 /Source/PermissionsExtractionTool/PermissionsExtractionTool/obj
+/Source/PermissionsExtractionTool/PermissionsExtractionTool/bin
+/Source/PermissionsExtractionTool/packages
