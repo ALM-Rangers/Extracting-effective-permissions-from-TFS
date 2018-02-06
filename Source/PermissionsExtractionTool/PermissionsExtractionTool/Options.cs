@@ -20,7 +20,7 @@ namespace Microsoft.ALMRangers.PermissionsExtractionTool
         /// <summary>
         /// Gets or sets user list for permission extraction.
         /// </summary>
-        [OptionArray('u', "users", Required = true, HelpText = @"User name (domain\username format for TFS or email for VSO) (at least one)")]
+        [OptionArray('u', "users", Required = true, HelpText = @"User name (domain\username format for TFS or email for VSTS) (at least one)")]
         public string[] Users { get; set; }
 
         /// <summary>
