@@ -194,7 +194,7 @@ The command line parameters are simple:
     Specify the collection URL, similar to using the tf.exe tool, for example: http://yourservername:8080/tfs/yourcollection
 
 -   **--users**=\<username 1\> \<username 2\>\
-    Username format can be “domain\\account” for TFS Server or email for VSO account
+    Username format can be “domain\\account” for TFS Server or email for VSTS account
 
 -   **--f**=\<logfile\>\
     The username is added in the name of the log: if the argument is “c:\\temp\\auditlog.txt” and username is demo\\user, the audit file output would be c:\\temp\\auditlog\_demo\_user.xml”
