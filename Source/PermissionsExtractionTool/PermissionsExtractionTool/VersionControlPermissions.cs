@@ -25,4 +25,19 @@ namespace Microsoft.ALMRangers.PermissionsExtractionTool
 
         #endregion
     }
+
+    /// <summary>
+    /// The version control permissions.
+    /// </summary>
+    public class GitVersionControlPermissions
+    {
+        #region Public Properties
+
+        /// <summary>
+        /// Gets or sets the version control permissions list.
+        /// </summary>
+        public List<GitPermission> VersionControlPermissionsList { get; set; }
+
+        #endregion
+    }
 }

@@ -90,19 +90,21 @@ namespace Microsoft.ALMRangers.PermissionsExtractionTool
             new Permission(PermissionScope.SourceControl, "Unlock other users' changes", "UnlockOther", VersionedItemPermissions.UnlockOther.ToString(), (int)VersionedItemPermissions.UnlockOther, string.Empty), 
                                                                       
             // Git Source Control
-            new Permission(PermissionScope.GitSourceControl, "Create Branch", "CreateBranch", TeamFoundation.SourceControl.WebApi.GitRepositoryPermissions.CreateBranch.ToString(), (int)TeamFoundation.SourceControl.WebApi.GitRepositoryPermissions.CreateBranch, string.Empty), 
-            new Permission(PermissionScope.GitSourceControl, "Create Repository", "CreateRepository", TeamFoundation.SourceControl.WebApi.GitRepositoryPermissions.CreateRepository.ToString(), (int)TeamFoundation.SourceControl.WebApi.GitRepositoryPermissions.CreateRepository, string.Empty), 
-            new Permission(PermissionScope.GitSourceControl, "Create Tag", "CreateTag", TeamFoundation.SourceControl.WebApi.GitRepositoryPermissions.CreateTag.ToString(), (int)TeamFoundation.SourceControl.WebApi.GitRepositoryPermissions.CreateTag, string.Empty),
-            new Permission(PermissionScope.GitSourceControl, "Delete Repository", "DeleteRepository", TeamFoundation.SourceControl.WebApi.GitRepositoryPermissions.DeleteRepository.ToString(), (int)TeamFoundation.SourceControl.WebApi.GitRepositoryPermissions.DeleteRepository, string.Empty), 
-            new Permission(PermissionScope.GitSourceControl, "Edit Policies", "EditPolicies", TeamFoundation.SourceControl.WebApi.GitRepositoryPermissions.EditPolicies.ToString(), (int)TeamFoundation.SourceControl.WebApi.GitRepositoryPermissions.EditPolicies, string.Empty), 
-            new Permission(PermissionScope.GitSourceControl, "Force Push (change history)", "ForcePush", TeamFoundation.SourceControl.WebApi.GitRepositoryPermissions.ForcePush.ToString(), (int)TeamFoundation.SourceControl.WebApi.GitRepositoryPermissions.ForcePush, string.Empty),
-            new Permission(PermissionScope.GitSourceControl, "Contribute", "GenericContribute", TeamFoundation.SourceControl.WebApi.GitRepositoryPermissions.GenericContribute.ToString(), (int)TeamFoundation.SourceControl.WebApi.GitRepositoryPermissions.GenericContribute, string.Empty),
+            new Permission(PermissionScope.GitSourceControl, "Administer", "Administer", TeamFoundation.SourceControl.WebApi.GitRepositoryPermissions.Administer.ToString(), (int)TeamFoundation.SourceControl.WebApi.GitRepositoryPermissions.Administer, string.Empty),
             new Permission(PermissionScope.GitSourceControl, "Read", "GenericRead", TeamFoundation.SourceControl.WebApi.GitRepositoryPermissions.GenericRead.ToString(), (int)TeamFoundation.SourceControl.WebApi.GitRepositoryPermissions.GenericRead, string.Empty),
+            new Permission(PermissionScope.GitSourceControl, "Contribute", "GenericContribute", TeamFoundation.SourceControl.WebApi.GitRepositoryPermissions.GenericContribute.ToString(), (int)TeamFoundation.SourceControl.WebApi.GitRepositoryPermissions.GenericContribute, string.Empty),
+            new Permission(PermissionScope.GitSourceControl, "Force Push (change history)", "ForcePush", TeamFoundation.SourceControl.WebApi.GitRepositoryPermissions.ForcePush.ToString(), (int)TeamFoundation.SourceControl.WebApi.GitRepositoryPermissions.ForcePush, string.Empty),
+            new Permission(PermissionScope.GitSourceControl, "Create Branch", "CreateBranch", TeamFoundation.SourceControl.WebApi.GitRepositoryPermissions.CreateBranch.ToString(), (int)TeamFoundation.SourceControl.WebApi.GitRepositoryPermissions.CreateBranch, string.Empty),
+            new Permission(PermissionScope.GitSourceControl, "Create Tag", "CreateTag", TeamFoundation.SourceControl.WebApi.GitRepositoryPermissions.CreateTag.ToString(), (int)TeamFoundation.SourceControl.WebApi.GitRepositoryPermissions.CreateTag, string.Empty),
             new Permission(PermissionScope.GitSourceControl, "Manage Note", "ManageNote", TeamFoundation.SourceControl.WebApi.GitRepositoryPermissions.ManageNote.ToString(), (int)TeamFoundation.SourceControl.WebApi.GitRepositoryPermissions.ManageNote, string.Empty),
-            new Permission(PermissionScope.GitSourceControl, "Manage permissions", "ManagePermissions", TeamFoundation.SourceControl.WebApi.GitRepositoryPermissions.ManagePermissions.ToString(), (int)TeamFoundation.SourceControl.WebApi.GitRepositoryPermissions.ManagePermissions, string.Empty),
-            new Permission(PermissionScope.GitSourceControl, "Remove Others' Locks", "RemoveOthersLocks", TeamFoundation.SourceControl.WebApi.GitRepositoryPermissions.RemoveOthersLocks.ToString(), (int)TeamFoundation.SourceControl.WebApi.GitRepositoryPermissions.RemoveOthersLocks, string.Empty),
-            new Permission(PermissionScope.GitSourceControl, "Rename repository", "RenameRepository", TeamFoundation.SourceControl.WebApi.GitRepositoryPermissions.RenameRepository.ToString(), (int)TeamFoundation.SourceControl.WebApi.GitRepositoryPermissions.RenameRepository, string.Empty),
             new Permission(PermissionScope.GitSourceControl, "Exempt from policies", "PolicyExempt", TeamFoundation.SourceControl.WebApi.GitRepositoryPermissions.PolicyExempt.ToString(), (int)TeamFoundation.SourceControl.WebApi.GitRepositoryPermissions.PolicyExempt, string.Empty),
+            new Permission(PermissionScope.GitSourceControl, "Create Repository", "CreateRepository", TeamFoundation.SourceControl.WebApi.GitRepositoryPermissions.CreateRepository.ToString(), (int)TeamFoundation.SourceControl.WebApi.GitRepositoryPermissions.CreateRepository, string.Empty), 
+            new Permission(PermissionScope.GitSourceControl, "Delete Repository", "DeleteRepository", TeamFoundation.SourceControl.WebApi.GitRepositoryPermissions.DeleteRepository.ToString(), (int)TeamFoundation.SourceControl.WebApi.GitRepositoryPermissions.DeleteRepository, string.Empty),
+            new Permission(PermissionScope.GitSourceControl, "Rename repository", "RenameRepository", TeamFoundation.SourceControl.WebApi.GitRepositoryPermissions.RenameRepository.ToString(), (int)TeamFoundation.SourceControl.WebApi.GitRepositoryPermissions.RenameRepository, string.Empty),
+            new Permission(PermissionScope.GitSourceControl, "Edit Policies", "EditPolicies", TeamFoundation.SourceControl.WebApi.GitRepositoryPermissions.EditPolicies.ToString(), (int)TeamFoundation.SourceControl.WebApi.GitRepositoryPermissions.EditPolicies, string.Empty),
+            new Permission(PermissionScope.GitSourceControl, "Remove Others' Locks", "RemoveOthersLocks", TeamFoundation.SourceControl.WebApi.GitRepositoryPermissions.RemoveOthersLocks.ToString(), (int)TeamFoundation.SourceControl.WebApi.GitRepositoryPermissions.RemoveOthersLocks, string.Empty),
+            new Permission(PermissionScope.GitSourceControl, "Manage permissions", "ManagePermissions", TeamFoundation.SourceControl.WebApi.GitRepositoryPermissions.ManagePermissions.ToString(), (int)TeamFoundation.SourceControl.WebApi.GitRepositoryPermissions.ManagePermissions, string.Empty),
+            new Permission(PermissionScope.GitSourceControl, "Contribute to Pull Requests", "PullRequestContribute", EnumerationsList.GitPermissions.PullRequestContribute.ToString(), (int)EnumerationsList.GitPermissions.PullRequestContribute, string.Empty),
         };
 
        #endregion
@@ -205,7 +207,7 @@ namespace Microsoft.ALMRangers.PermissionsExtractionTool
             {
                 if (0 != ace.Allow)
                 {
-                    foreach (var action in securityNamespace.Description.Actions)
+                    foreach (ActionDefinition action in securityNamespace.Description.Actions)
                     {
                         if ((ace.Allow & action.Bit) == action.Bit)
                         {
@@ -216,7 +218,7 @@ namespace Microsoft.ALMRangers.PermissionsExtractionTool
 
                 if (0 != ace.Deny)
                 {
-                    foreach (var action in securityNamespace.Description.Actions)
+                    foreach (ActionDefinition action in securityNamespace.Description.Actions)
                     {
                         if ((ace.Deny & action.Bit) == action.Bit)
                         {
@@ -241,19 +243,20 @@ namespace Microsoft.ALMRangers.PermissionsExtractionTool
         /// <returns>A simplified permission list</returns>
         public static List<Permission> RemoveDuplicatePermissionsAndCombineGroups(List<Permission> permissions)
         {
-            List<Permission> permissionsList = new List<Permission>();
+            var permissionsList = new List<Permission>();
 
-            foreach (var permission in permissions)
+            foreach (Permission permission in permissions)
             {
-                var duplicatePermissions = (from dupPermission in permissions
-                                            where dupPermission.InternalName == permission.InternalName
-                                            select dupPermission).ToList();
+                List<Permission> duplicatePermissions = (from dupPermission in permissions
+                                                         where dupPermission.InternalName == permission.InternalName
+                                                         select dupPermission)
+                    .ToList();
                 if (duplicatePermissions.Count > 1)
                 {
-                    // Get inhirted group names
+                    // Get inherited group names
                     string[] groupNames = new string[duplicatePermissions.Count];
                     int counter = 0;
-                    foreach (var item in duplicatePermissions)
+                    foreach (Permission item in duplicatePermissions)
                     {
                         groupNames[counter] = item.GroupMemberInheritance;
                         counter++;
@@ -306,7 +309,7 @@ namespace Microsoft.ALMRangers.PermissionsExtractionTool
                 yield return node;
                 if (node.HasChildNodes)
                 {
-                    foreach (var childNode in FlattenTree(node.ChildNodes))
+                    foreach (Node childNode in FlattenTree(node.ChildNodes))
                     {
                         yield return childNode;
                     }
@@ -327,6 +330,29 @@ namespace Microsoft.ALMRangers.PermissionsExtractionTool
             var result = Path.Combine(Path.GetDirectoryName(fileName), string.Format("{0}_{1}{2}", rootPart, userNamePart, Path.GetExtension(fileName)));
             return result;
         }
+
+        public static IEnumerable<AclAndName> EnumerateAcls(Microsoft.TeamFoundation.Framework.Client.AccessControlEntry ace, bool isGroupAcl)
+        {
+            string groupPrefix = isGroupAcl ? "Group " : string.Empty;
+            yield return new AclAndName(ace.Allow, groupPrefix + "Allow");
+            yield return new AclAndName(ace.Deny, groupPrefix + "Deny");
+            yield return new AclAndName(ace.ExtendedInfo.EffectiveAllow, groupPrefix + "Effective Allow");
+            yield return new AclAndName(ace.ExtendedInfo.EffectiveDeny, groupPrefix + "Effective Deny");
+            yield return new AclAndName(ace.ExtendedInfo.InheritedAllow, groupPrefix + "Inherited Allow");
+            yield return new AclAndName(ace.ExtendedInfo.InheritedDeny, groupPrefix + "Inherited Deny");
+        }
+
         #endregion
+    }
+
+    public class AclAndName
+    {
+        public AclAndName(int acl, string name)
+        {
+            Acl = acl;
+            Name = name;
+        }
+        public readonly int Acl;
+        public readonly string Name;
     }
 }

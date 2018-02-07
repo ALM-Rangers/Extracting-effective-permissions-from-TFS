@@ -26,7 +26,7 @@ namespace Microsoft.ALMRangers.PermissionsExtractionTool
         /// <summary>
         /// Gets or sets the team collection URL
         /// </summary>
-        [Option("collection", Required = true, HelpText = "Team Project collection URL (http://servername:8080/tfs/Collection)")]
+        [Option("collection", Required = true, HelpText = "Team Project collection URL. E.g. http://servername:8080/tfs/Collection for TFS, or https://youraccount.visualstudio.com for VSTS")]
         public string Collection { get; set; }
 
         /// <summary>

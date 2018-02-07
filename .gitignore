@@ -2,4 +2,7 @@
 NuGet.exe
 /Source/PermissionsExtractionTool/PermissionsExtractionTool/obj
 /Source/PermissionsExtractionTool/PermissionsExtractionTool/bin
-/Source/PermissionsExtractionTool/packages
+packages/
+*.csproj.user
+*.tmp
+

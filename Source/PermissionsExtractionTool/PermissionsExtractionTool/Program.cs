@@ -6,6 +6,10 @@
 //   The program.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
+
+using Microsoft.TeamFoundation.Git.Client;
+using Microsoft.TeamFoundation.SourceControl.WebApi;
+
 namespace Microsoft.ALMRangers.PermissionsExtractionTool
 {
     using System;
@@ -32,12 +36,18 @@ namespace Microsoft.ALMRangers.PermissionsExtractionTool
         /// <summary>
         /// Sends a failure message of the ERROR output and wait for a press on the enter key.
         /// </summary>
-        /// <param name="message">message about the failure</param>
-        private static void Fail(string message = null)
+        /// <param name="message">Message about the failure</param>
+        /// <param name="ex">Optional exception to trace to stderr.</param>
+        private static void Fail(string message = null, Exception ex = null)
         {
             if (!string.IsNullOrEmpty(message))
             {
                 Console.Error.WriteLine(message);
+            }
+
+            if (ex != null)
+            {
+                Console.Error.WriteLine(ex.ToString());
             }
 
             Console.WriteLine("Press any key to continue...");
@@ -74,9 +84,9 @@ namespace Microsoft.ALMRangers.PermissionsExtractionTool
             {
                 tfs.EnsureAuthenticated();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                Fail("Connection to TFS failed");
+                Fail("Connection to TFS failed", ex);
                 return -1;
             }
 
@@ -167,21 +177,21 @@ namespace Microsoft.ALMRangers.PermissionsExtractionTool
                     TeamFoundation.Git.Client.GitRepositoryService gitRepostoryService = tfs.GetService<TeamFoundation.Git.Client.GitRepositoryService>();
 
                     Console.WriteLine("==== Extracting Permissions for {0} Team Project ====", teamProject.Name);
-                    var groups = GetUserGroups(tfs, teamProject.Uri.AbsoluteUri, userIdentity);
-                    var projectLevelPermissions = ExtractGenericSecurityNamespacePermissions(server, PermissionScope.TeamProject, userIdentity, projectSecurityToken, ims, groups);
+                    List<string> groups = GetUserGroups(tfs, teamProject.Uri.AbsoluteUri, userIdentity);
+                    List<Permission> projectLevelPermissions = ExtractGenericSecurityNamespacePermissions(server, PermissionScope.TeamProject, userIdentity, projectSecurityToken, ims, groups);
 
                     // Version Control Permissions
-                    var versionControlPermissions = ExtractVersionControlPermissions(server, groups, userIdentity, teamProject.Name, ims, vcs);
-                    var gitVersionControlPermissions = ExtractGitVersionControlPermissions(server, groups, userIdentity, teamProject.Name, ims, vcs, gitRepostoryService);
+                    List<Permission> versionControlPermissions = ExtractVersionControlPermissions(server, groups, userIdentity, teamProject.Name, ims, vcs);
+                    List<GitPermission> gitVersionControlPermissions = ExtractGitVersionControlPermissions(server, groups, userIdentity, teamProject.Name, ims, vcs, gitRepostoryService);
 
                     // Build Permissions
-                    var buildPermissions = ExtractBuildPermissions(server, projectSecurityToken, userIdentity);
+                    List<Permission> buildPermissions = ExtractBuildPermissions(server, projectSecurityToken, userIdentity);
 
                     // WorkItems Area Permissions
-                    var areasPermissions = ExtractAreasPermissions(server, teamProject, userIdentity, ims, groups);
+                    List<AreaPermission> areasPermissions = ExtractAreasPermissions(server, teamProject, userIdentity, ims, groups);
 
                     // WorkItems Iteration Permissions
-                    var iterationPermissions = ExtractIterationPermissions(server, teamProject, userIdentity, ims, groups);
+                    List<IterationPermission> iterationPermissions = ExtractIterationPermissions(server, teamProject, userIdentity, ims, groups);
 
                     // Workspace Permissions
                     // var workspacePermission = ExtractGenericSecurityNamespacePermissions(server, PermissionScope.Workspaces, userIdentity, projectSecurityToken, ims, groups);
@@ -201,7 +211,7 @@ namespace Microsoft.ALMRangers.PermissionsExtractionTool
                                     =
                                     projectLevelPermissions
                             },
-                        GitVersionControlPermissions = new VersionControlPermissions
+                        GitVersionControlPermissions = new GitVersionControlPermissions
                         {
                             VersionControlPermissionsList = gitVersionControlPermissions
                         },
@@ -266,25 +276,37 @@ namespace Microsoft.ALMRangers.PermissionsExtractionTool
         private static List<Permission> ExtractGenericSecurityNamespacePermissions(ISecurityService server, PermissionScope permissionScope, TeamFoundationIdentity userIdentity, string securityToken, IIdentityManagementService identityManagementService, IEnumerable<string> groups)
         {
             SecurityNamespace genericSecurityNamespace = server.GetSecurityNamespace(Helpers.GetSecurityNamespaceId(permissionScope, server));
-            AccessControlList userAccessList =
-                genericSecurityNamespace.QueryAccessControlList(
-                    securityToken,
-                    new List<IdentityDescriptor> { userIdentity.Descriptor },
-                    true);
+
             var result = new List<Permission>();
-            result.AddRange(Helpers.AccessControlEntryToPermission(genericSecurityNamespace, userAccessList.AccessControlEntries, false, string.Empty));
-
-            // handle group inheritance 
-            foreach (string group in groups)
+            try
             {
-                TeamFoundationIdentity groupIdentity = identityManagementService.ReadIdentity(IdentitySearchFactor.Identifier, group, MembershipQuery.None, ReadIdentityOptions.IncludeReadFromSource);
-
-                AccessControlList groupAccessList =
+                AccessControlList userAccessList =
                     genericSecurityNamespace.QueryAccessControlList(
                         securityToken,
-                        new List<IdentityDescriptor> { groupIdentity.Descriptor },
+                        new List<IdentityDescriptor> {userIdentity.Descriptor},
                         true);
-                result.AddRange(Helpers.AccessControlEntryToPermission(genericSecurityNamespace, groupAccessList.AccessControlEntries, true, groupIdentity.DisplayName));
+                result.AddRange(Helpers.AccessControlEntryToPermission(genericSecurityNamespace,
+                    userAccessList.AccessControlEntries, false, string.Empty));
+
+                // handle group inheritance 
+                foreach (string group in groups)
+                {
+                    TeamFoundationIdentity groupIdentity = identityManagementService.ReadIdentity(
+                        IdentitySearchFactor.Identifier, group, MembershipQuery.None,
+                        ReadIdentityOptions.IncludeReadFromSource);
+
+                    AccessControlList groupAccessList =
+                        genericSecurityNamespace.QueryAccessControlList(
+                            securityToken,
+                            new List<IdentityDescriptor> {groupIdentity.Descriptor},
+                            true);
+                    result.AddRange(Helpers.AccessControlEntryToPermission(genericSecurityNamespace,
+                        groupAccessList.AccessControlEntries, true, groupIdentity.DisplayName));
+                }
+            }
+            catch (TeamFoundationServiceException ex)
+            {
+                Console.Error.WriteLine("ERROR: " + ex.Message);
             }
 
             var modifiedPermissions = Helpers.RemoveDuplicatePermissionsAndCombineGroups(result);
@@ -350,7 +372,6 @@ namespace Microsoft.ALMRangers.PermissionsExtractionTool
             // root Area Node
             var areaPermissionRoot = new AreaPermission { AreaName = teamProject.Name, AreaPermissions = new List<Permission>() };
             areaPermissionRoot.AreaPermissions.AddRange(ExtractGenericSecurityNamespacePermissions(server, PermissionScope.WorkItemAreas, userIdentity, teamProject.AreaRootNodeUri.AbsoluteUri, identityManagementService, groups));
-
             if (areaPermissionRoot.AreaPermissions.Count > 0)
             {
                 result.Add(areaPermissionRoot);
@@ -361,7 +382,6 @@ namespace Microsoft.ALMRangers.PermissionsExtractionTool
             {
                 var areaPermission = new AreaPermission { AreaName = area.Path, AreaPermissions = new List<Permission>() };
                 areaPermission.AreaPermissions.AddRange(ExtractGenericSecurityNamespacePermissions(server, PermissionScope.WorkItemAreas, userIdentity, area.Uri.AbsoluteUri, identityManagementService, groups));
-
                 if (areaPermission.AreaPermissions.Count > 0)
                 {
                     Console.WriteLine("  -- Adding Permissions for {0}", area.Path);
@@ -435,18 +455,15 @@ namespace Microsoft.ALMRangers.PermissionsExtractionTool
 
             foreach (AccessControlEntry ace in buildAccessList.AccessControlEntries)
             {
-                if (0 != ace.Allow)
+                foreach (AclAndName aclAndName in Helpers.EnumerateAcls(ace, false))
                 {
-                    var allowedBuildPermissions = ((EnumrationsList.BuildPermissions)ace.Allow).ToString();
-                    result.AddRange(
-                        Helpers.GetActionDetailsByName(allowedBuildPermissions, "Allow", PermissionScope.TeamBuild));
-                }
-
-                if (0 != ace.Deny)
-                {
-                    var denyBuildPermissions = ((EnumrationsList.BuildPermissions)ace.Deny).ToString();
-                    result.AddRange(
-                        Helpers.GetActionDetailsByName(denyBuildPermissions, "Deny", PermissionScope.TeamBuild));
+                    if (aclAndName.Acl != 0)
+                    {
+                        var allowedBuildPermissions = ((EnumerationsList.BuildPermissions) ace.Allow).ToString();
+                        result.AddRange(
+                            Helpers.GetActionDetailsByName(allowedBuildPermissions, aclAndName.Name,
+                                PermissionScope.TeamBuild));
+                    }
                 }
             }
 
@@ -472,9 +489,10 @@ namespace Microsoft.ALMRangers.PermissionsExtractionTool
             VersionControlServer vcs)
         {
             Console.WriteLine("== Extract Version Control Permissions ==");
-            var teamProject = vcs.TryGetTeamProject(projectSecurityToken);
+            TeamProject teamProject = vcs.TryGetTeamProject(projectSecurityToken);
             if (teamProject == null)
             {
+                Console.WriteLine("Could not get team project object from TFS/VSTS");
                 return new List<Permission>();
             }
 
@@ -492,101 +510,94 @@ namespace Microsoft.ALMRangers.PermissionsExtractionTool
         /// <param name="vcs">The VCS.</param>
         /// <param name="gitService">The git service.</param>
         /// <returns>List of Permissions</returns>
-        private static List<Permission> ExtractGitVersionControlPermissions(ISecurityService server, IEnumerable<string> groups, TeamFoundationIdentity userIdentity, string projectSecurityToken, IIdentityManagementService identityManagementService, VersionControlServer vcs, TeamFoundation.Git.Client.GitRepositoryService gitService)
+        private static List<GitPermission> ExtractGitVersionControlPermissions(
+            ISecurityService server,
+            List<string> groups,
+            TeamFoundationIdentity userIdentity,
+            string projectSecurityToken,
+            IIdentityManagementService identityManagementService,
+            VersionControlServer vcs,
+            GitRepositoryService gitService)
         {
             Console.WriteLine("== Extract Git Version Control Permissions ==");
             SecurityNamespace gitVersionControlSecurityNamespace = server.GetSecurityNamespace(Helpers.GetSecurityNamespaceId(PermissionScope.GitSourceControl, server));
-            var gitProjectRepoService = gitService.QueryRepositories(projectSecurityToken);
-            
-            // This sample handle only the default repository, you can iterate through all repositories same way
-            var defaultGitRepo = gitProjectRepoService.SingleOrDefault(gr => gr.Name.Equals(projectSecurityToken));
+            IList<GitRepository> gitProjectRepoService = gitService.QueryRepositories(projectSecurityToken);
 
-            vcs.TryGetTeamProject(projectSecurityToken);
-            if (defaultGitRepo == null)
-            {
-                return new List<Permission>();
-            }
-
-            // Repository Security Token is repoV2/TeamProjectId/RepositoryId
-            var repoIdToken = string.Format("repoV2{0}{1}{2}{3}", gitVersionControlSecurityNamespace.Description.SeparatorValue, defaultGitRepo.ProjectReference.Id, gitVersionControlSecurityNamespace.Description.SeparatorValue, defaultGitRepo.Id);
-            
-            // vcs.GetTeamProject(projectSecurityToken);
-            AccessControlList versionControlAccessList =
-                gitVersionControlSecurityNamespace.QueryAccessControlList(
-                    repoIdToken,
-                    new List<IdentityDescriptor> { userIdentity.Descriptor },
-                    true);
-            var gitVersionControlPermissions = new List<Permission>();
-
-            foreach (AccessControlEntry ace in versionControlAccessList.AccessControlEntries)
-            {
-                if (0 != ace.Allow)
-                {
-                    var allowedVersionControlPermissions = ((EnumrationsList.GitPermissions)ace.Allow).ToString();
-                    gitVersionControlPermissions.AddRange(
-                        Helpers.GetActionDetailsByName(allowedVersionControlPermissions, "Allow", PermissionScope.GitSourceControl));
-                }
-
-                if (0 != ace.Deny)
-                {
-                    var denyVersionControlPermissions = ((EnumrationsList.GitPermissions)ace.Deny).ToString();
-                    gitVersionControlPermissions.AddRange(
-                        Helpers.GetActionDetailsByName(denyVersionControlPermissions, "Deny", PermissionScope.GitSourceControl));
-                }
-            }
-
-            if (gitVersionControlPermissions.Count == 0)
-            {
-                foreach (AccessControlEntry ace in versionControlAccessList.AccessControlEntries)
-                {
-                    if (0 != ace.ExtendedInfo.EffectiveAllow)
-                    {
-                        var allowedVersionControlPermissions = ((EnumrationsList.GitPermissions)ace.ExtendedInfo.EffectiveAllow).ToString();
-                        gitVersionControlPermissions.AddRange(
-                            Helpers.GetActionDetailsByName(allowedVersionControlPermissions, "Allow", PermissionScope.GitSourceControl));
-                    }
-
-                    if (0 != ace.ExtendedInfo.EffectiveDeny)
-                    {
-                        var denyVersionControlPermissions = ((EnumrationsList.GitPermissions)ace.ExtendedInfo.EffectiveDeny).ToString();
-                        gitVersionControlPermissions.AddRange(
-                            Helpers.GetActionDetailsByName(denyVersionControlPermissions, "Deny", PermissionScope.GitSourceControl));
-                    }
-                }
-            }
-
+            var groupsIdentities = new List<TeamFoundationIdentity>(groups.Count);
             foreach (string group in groups)
             {
-                TeamFoundationIdentity groupIdentity = identityManagementService.ReadIdentity(IdentitySearchFactor.Identifier, group, MembershipQuery.None, ReadIdentityOptions.IncludeReadFromSource);
-
-                AccessControlList groupAccessList =
-              gitVersionControlSecurityNamespace.QueryAccessControlList(
-               repoIdToken,
-                  new List<IdentityDescriptor> { groupIdentity.Descriptor },
-                  true);
-
-                foreach (AccessControlEntry ace in groupAccessList.AccessControlEntries)
-                {
-                    if (0 != ace.Allow)
-                    {
-                        var allowedPermissions = ((EnumrationsList.GitPermissions)ace.Allow).ToString();
-                        var permissionsList = Helpers.GetActionDetailsByName(allowedPermissions, "Inherited Allow", PermissionScope.GitSourceControl);
-                        Helpers.AppendGroupInheritanceInformation(permissionsList, groupIdentity.DisplayName);
-                        gitVersionControlPermissions.AddRange(permissionsList);
-                    }
-
-                    if (0 != ace.Deny)
-                    {
-                        var denyPermissions = ((EnumrationsList.GitPermissions)ace.Deny).ToString();
-                        var permissionsList = Helpers.GetActionDetailsByName(denyPermissions, "Inherited Deny", PermissionScope.GitSourceControl);
-                        Helpers.AppendGroupInheritanceInformation(permissionsList, groupIdentity.DisplayName);
-                        gitVersionControlPermissions.AddRange(permissionsList);
-                    }
-                }
+                TeamFoundationIdentity groupIdentity = identityManagementService.ReadIdentity(
+                    IdentitySearchFactor.Identifier, group, MembershipQuery.None,
+                    ReadIdentityOptions.IncludeReadFromSource);
+                groupsIdentities.Add(groupIdentity);
             }
 
-            var modifiedPermissions = Helpers.RemoveDuplicatePermissionsAndCombineGroups(gitVersionControlPermissions);
-            return modifiedPermissions;
+            var results = new List<GitPermission>();
+
+            foreach (GitRepository repo in gitProjectRepoService)
+            {
+                string primaryBranch = (repo.DefaultBranch ?? "(no default branch)").StartsWith("refs/heads/") ?
+                    repo.DefaultBranch.Substring(11) :
+                    repo.DefaultBranch;
+
+                Console.WriteLine("  -- Repo: {0} branch {1}", repo.Name, primaryBranch);
+
+                // Repository Security Token is repoV2/TeamProjectId/RepositoryId
+                string repoIdToken = string.Format("repoV2{0}{1}{2}{3}",
+                    gitVersionControlSecurityNamespace.Description.SeparatorValue,
+                    repo.ProjectReference.Id,
+                    gitVersionControlSecurityNamespace.Description.SeparatorValue,
+                    repo.Id);
+
+                AccessControlList versionControlAccessList =
+                    gitVersionControlSecurityNamespace.QueryAccessControlList(
+                        repoIdToken,
+                        new List<IdentityDescriptor> {userIdentity.Descriptor},
+                        true);
+
+                var gitVersionControlPermissions = new List<Permission>();
+                foreach (AccessControlEntry ace in versionControlAccessList.AccessControlEntries)
+                {
+                    foreach (AclAndName aclAndName in Helpers.EnumerateAcls(ace, false))
+                    {
+                        if (aclAndName.Acl != 0)
+                        {
+                            string versionControlPermissions = ((EnumerationsList.GitPermissions) aclAndName.Acl).ToString();
+                            gitVersionControlPermissions.AddRange(
+                                Helpers.GetActionDetailsByName(versionControlPermissions, aclAndName.Name,
+                                    PermissionScope.GitSourceControl));
+                        }
+                    }
+                }
+
+                foreach (TeamFoundationIdentity groupIdentity in groupsIdentities)
+                {
+                    AccessControlList groupAccessList =
+                        gitVersionControlSecurityNamespace.QueryAccessControlList(
+                            repoIdToken,
+                            new List<IdentityDescriptor> {groupIdentity.Descriptor},
+                            true);
+
+                    foreach (AccessControlEntry ace in groupAccessList.AccessControlEntries)
+                    {
+                        foreach (AclAndName aclAndName in Helpers.EnumerateAcls(ace, true))
+                        {
+                            if (aclAndName.Acl != 0)
+                            {
+                                string versionControlPermissions = ((EnumerationsList.GitPermissions)aclAndName.Acl).ToString();
+                                gitVersionControlPermissions.AddRange(
+                                    Helpers.GetActionDetailsByName(versionControlPermissions, aclAndName.Name,
+                                        PermissionScope.GitSourceControl));
+                            }
+                        }
+                    }
+                }
+
+                List<Permission> modifiedPermissions = Helpers.RemoveDuplicatePermissionsAndCombineGroups(gitVersionControlPermissions);
+                results.AddRange(modifiedPermissions.Select(perm => new GitPermission(perm, repo.Name, primaryBranch)));
+            }
+
+            return results;
         }
 
         /// <summary>

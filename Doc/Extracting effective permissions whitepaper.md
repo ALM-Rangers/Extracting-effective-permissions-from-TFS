@@ -1,12 +1,12 @@
 ALM RANGERS
  ---
 
-Extract effective permissions from TFS 2013
+Extract effective permissions from TFS 2013, 2015, 2017 and VSTS
 ===
 
 Hosam Kamel, Michel Perfetti
 
-Understanding effective permissions can be daunting in Visual Studio Team Foundation Server (TFS), especially when compliance goals require changes to default security and privileges.
+Understanding effective permissions can be daunting in Visual Studio Team Foundation Server (TFS) and Visual Studio Team Services (VSTS), especially when compliance goals require changes to default security and privileges.
 
 This whitepaper examines permissions in TFS, introduces security management tools, and helps you understand the world of security namespaces. We introduce our research code sample, which you can re-use to extract effective permissions, or customize to meet your needs.
 
@@ -191,7 +191,7 @@ You can use the XML output format to generate regular snapshots for a specific a
 The command line parameters are simple:
 
 -   **--collection**=\<URL of the collection\>\
-    Specify the collection URL, similar to using the tf.exe tool, for example: http://yourservername:8080/tfs/yourcollection
+    Specify the collection URL, similar to using the tf.exe tool, for example: http://yourservername:8080/tfs/yourcollection or https://youraccount.visualstudio.com
 
 -   **--users**=\<username 1\> \<username 2\>\
     Username format can be “domain\\account” for TFS Server or email for VSTS account
@@ -204,7 +204,7 @@ The command line parameters are simple:
 
 In case of an error, the sample program returns a non-zero exit code.
 
-The program stops if the current user does not have the administrative rights on the collection.
+The program logs permission errors for any areas of the collection that you do not have access to.
 
 For each user, the program retrieves the following permissions to generate the xml-output report file:
 
