@@ -20,13 +20,13 @@ namespace Microsoft.ALMRangers.PermissionsExtractionTool
         /// <summary>
         /// Gets or sets user list for permission extraction.
         /// </summary>
-        [OptionArray('u', "users", Required = true, HelpText = @"User name (domain\username format for TFS or email for VSO) (at least one)")]
+        [OptionArray('u', "users", Required = true, HelpText = @"User name (domain\username format for TFS or email for VSTS) (at least one)")]
         public string[] Users { get; set; }
 
         /// <summary>
         /// Gets or sets the team collection URL
         /// </summary>
-        [Option("collection", Required = true, HelpText = "Team Project collection URL (http://servername:8080/tfs/Collection)")]
+        [Option("collection", Required = true, HelpText = "Team Project collection URL. E.g. http://servername:8080/tfs/Collection for TFS, or https://youraccount.visualstudio.com for VSTS")]
         public string Collection { get; set; }
 
         /// <summary>

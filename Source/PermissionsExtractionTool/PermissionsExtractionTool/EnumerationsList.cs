@@ -1,9 +1,9 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="EnumrationsList.cs" company="Microsoft Corporation">
+// <copyright file="EnumerationsList.cs" company="Microsoft Corporation">
 //   Microsoft Visual Studio ALM Rangers
 // </copyright>
 // <summary>
-//   Defines the EnumrationsList type.
+//   Defines the EnumerationsList type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 namespace Microsoft.ALMRangers.PermissionsExtractionTool
@@ -13,54 +13,35 @@ namespace Microsoft.ALMRangers.PermissionsExtractionTool
     /// <summary>
     ///    Enumerations List
     /// </summary>
-    public static class EnumrationsList
+    public static class EnumerationsList
     {
-        #region EnumrationsList
+        #region EnumerationsList
         /// <summary>
-        /// Git Version Control Permissions
+        /// Git Version Control Permissions. Derived from Microsoft.TeamFoundation.SourceControl.WebApi.GitRepositoryPermissions
+        /// version 15 but only includes the individual flag values, not the multi-bit values, to make it easier to select flag
+        /// names from a bitmask.
         /// </summary>
         [Flags]
         public enum GitPermissions
         {
-            /// <summary>
-            /// The none
-            /// </summary>
             None = 0x0,
-
-            /// <summary>
-            /// The administer
-            /// </summary>
             Administer = 0x1,
-
-            /// <summary>
-            /// The generic read
-            /// </summary>
             GenericRead = 0x2,
-
-            /// <summary>
-            /// The generic contribute
-            /// </summary>
             GenericContribute = 0x4,
-
-            /// <summary>
-            /// The force push
-            /// </summary>
             ForcePush = 0x8,
-
-            /// <summary>
-            /// The create branch
-            /// </summary>
             CreateBranch = 0x10,
-
-            /// <summary>
-            /// The create tag
-            /// </summary>
             CreateTag = 0x20,
-
-            /// <summary>
-            /// The manage note
-            /// </summary>
-            ManageNote = 0x40
+            ManageNote = 0x40,
+            PolicyExempt = 0x80,
+            CreateRepository = 0x0100,
+            DeleteRepository = 0x0200,
+            RenameRepository = 0x0400,
+            EditPolicies = 0x0800,
+            RemoveOthersLocks = 0x1000,
+            ManagePermissions = 0x2000,
+            PullRequestContribute = 0x4000,
+            Unknown0x8000 = 0x8000,  // Just in case
+            Unknown0x10000 = 0x10000,  // Just in case
         }
 
         /// <summary>

@@ -56,7 +56,7 @@ namespace Microsoft.ALMRangers.PermissionsExtractionTool
         /// Gets or sets the version control permissions.
         /// </summary>
         [XmlElement(ElementName = "GitVersionControlPermissions")]
-        public VersionControlPermissions GitVersionControlPermissions { get; set; }
+        public GitVersionControlPermissions GitVersionControlPermissions { get; set; }
 
         /// <summary>
         /// Gets or sets the work items permissions.

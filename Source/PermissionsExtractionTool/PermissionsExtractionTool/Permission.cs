@@ -41,19 +41,19 @@ namespace Microsoft.ALMRangers.PermissionsExtractionTool
         /// The permission state.
         /// </param>
         public Permission(
-            PermissionScope scope, 
-            string displayName, 
+            PermissionScope scope,
+            string displayName,
             string internalName, 
             string permissionConstant, 
             int permissionId, 
             string permissionState)
         {
-            this.Scope = scope;
-            this.PermissionConstant = permissionConstant;
-            this.DisplayName = displayName;
-            this.PermissionId = permissionId;
-            this.InternalName = internalName;
-            this.Value = permissionState;
+            Scope = scope;
+            PermissionConstant = permissionConstant;
+            DisplayName = displayName;
+            PermissionId = permissionId;
+            InternalName = internalName;
+            Value = permissionState;
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace Microsoft.ALMRangers.PermissionsExtractionTool
         #region Public Properties
 
         /// <summary>
-        /// Gets or sets the display name.
+        /// Gets or sets the display name for the permission.
         /// </summary>
         public string DisplayName { get; set; }
 
@@ -105,5 +105,23 @@ namespace Microsoft.ALMRangers.PermissionsExtractionTool
         /// </summary>
         public string GroupMemberInheritance { get; set; }
         #endregion
+    }
+
+    [XmlRoot(ElementName = "GitPermission")]
+    public class GitPermission : Permission
+    {
+        public GitPermission(Permission basePerm, string repoName, string primaryBranch)
+            : base(basePerm.Scope, basePerm.DisplayName, basePerm.InternalName, basePerm.PermissionConstant, basePerm.PermissionId, basePerm.Value)
+        {
+            RepoName = repoName;
+            RepoPrimaryBranch = primaryBranch;
+        }
+
+        public GitPermission()
+        {
+        }
+
+        public string RepoName { get; set; }
+        public string RepoPrimaryBranch { get; set; }
     }
 }
