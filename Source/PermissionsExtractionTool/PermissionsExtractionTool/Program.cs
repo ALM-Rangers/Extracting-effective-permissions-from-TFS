@@ -329,8 +329,10 @@ namespace Microsoft.ALMRangers.PermissionsExtractionTool
 
             // root Area Node
             var iterationPermissionRoot = new IterationPermission { IterationName = teamProject.Name, IterationPermissions = new List<Permission>() };
-            iterationPermissionRoot.IterationPermissions.AddRange(ExtractGenericSecurityNamespacePermissions(server, PermissionScope.WorkItemIterations, userIdentity, lstIterations.First().ParentNode.Uri.AbsoluteUri, identityManagementService, groups));
-
+            if (lstIterations.Any())
+            { 
+                iterationPermissionRoot.IterationPermissions.AddRange(ExtractGenericSecurityNamespacePermissions(server, PermissionScope.WorkItemIterations, userIdentity, lstIterations.First().ParentNode.Uri.AbsoluteUri, identityManagementService, groups));
+            }
             if (iterationPermissionRoot.IterationPermissions.Count > 0)
             {
                 result.Add(iterationPermissionRoot);
