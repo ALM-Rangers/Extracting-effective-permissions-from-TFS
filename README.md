@@ -1,6 +1,9 @@
 # Extracting effective permissions from TFS
 Welcome to the Extract effective permissions from TFS Whitepaper and Samples
 
+
+> **NOTICE** - We have deprecated this project. The project will continue to serve as an open source solution and sample extension on GitHub.
+
 This practical guidance and sample code is based on extensive research to address two of the commonly heard requests on Team Foundation Server security:
 
 1.  Report on the effective permissions of a TFS user/group.
